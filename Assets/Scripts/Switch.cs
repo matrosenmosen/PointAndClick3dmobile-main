@@ -34,10 +34,15 @@ public class Switch : MonoBehaviour
 
     public void Next() 
     {
-        index += 1;
+        index ++;
 
         for (int i = 0; i < panels.Length; i++) 
         {
+            if(index > panels.Length - 1) 
+            {
+                index = 0;
+            }
+
             panels[i].gameObject.SetActive(false);
             panels[index].gameObject.SetActive(true);
         }
@@ -46,10 +51,16 @@ public class Switch : MonoBehaviour
     }
     public void Previous() 
     {
-        index -= 1;
+        index --;
 
         for(int i = 0; i < panels.Length; i++) 
         {
+
+            if (index < 0)
+            {
+                index = panels.Length - 1;
+            }
+
             panels[i].gameObject.SetActive(false);
             panels[index].gameObject.SetActive(true);
         }
